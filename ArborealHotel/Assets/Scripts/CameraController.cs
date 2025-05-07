@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CameraController : MonoBehaviour
 {
@@ -9,7 +7,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private float mouseSensitivityX = 100f;
-    [SerializeField] private float mouseSensitivityY = 100f;
     
     [Header("Key Bindings")]
     [SerializeField] private KeyCode forward;

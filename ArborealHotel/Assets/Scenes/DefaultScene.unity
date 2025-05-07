@@ -553,7 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDir: {x: 0, y: 0, z: 0}
   moveSpeed: 1.17
-  mouseSensitivityX: 100
+  mouseSensitivityX: 200
   mouseSensitivityY: 100
   forward: 119
   backward: 115
