@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LayerMask constructionZoneMask;
     [SerializeField] private LayerMask constructionMask;
     [SerializeField] private bool inConstruction = false;
+    [SerializeField] private bool onMovingConstruction;
     
     [Header("Object to place")]
     public GameObject currentObjectToPlace;
@@ -58,6 +59,30 @@ public class GameManager : MonoBehaviour
             else
             {
                 currentObjectToPlace.SetActive(false);
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(_ray, out _hit, 100, constructionMask))
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    currentObjectToPlace = _hit.transform.parent.gameObject;
+                    onMovingConstruction = true;
+                }
+                else
+                {
+                    onMovingConstruction = false;
+                    currentObjectToPlace = null;
+                }
+            }
+
+            if (onMovingConstruction)
+            {
+                if (Physics.Raycast(_ray, out _hit, 100, constructionZoneMask))
+                {
+                    currentObjectToPlace.transform.position = _hit.point;
+                }
             }
         }
     }
